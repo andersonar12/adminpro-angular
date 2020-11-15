@@ -8,3 +8,7 @@ body{
     background: #242a33;
     color: #26c6da;
 }
+
+#themecolors > li > a:hover{
+    cursor: pointer;
+}

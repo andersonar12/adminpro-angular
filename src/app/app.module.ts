@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 
 import { APP_ROUTES } from './app.routes';
+
 import { RegisterComponent } from './login/register.component';
 import { PagesModule } from './pages/pages.module';
+import { ServiceModule } from './services/service.module';
 
 
 
@@ -16,15 +18,13 @@ import { PagesModule } from './pages/pages.module';
     AppComponent,
     LoginComponent,
     RegisterComponent
-  /*   DashboardComponent,
-    ProgressComponent,
-    Graficas1Component, */
   ],
   imports: [
     PagesModule,
     BrowserModule,
     APP_ROUTES,
-    FormsModule
+    FormsModule,
+    ServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
