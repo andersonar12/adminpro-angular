@@ -10,6 +10,7 @@ import { APP_ROUTES } from './app.routes';
 import { RegisterComponent } from './login/register.component';
 import { PagesModule } from './pages/pages.module';
 import { ServiceModule } from './services/service.module';
+import { RxjsComponent } from './components/rxjs/rxjs.component';
 
 
 
@@ -17,7 +18,8 @@ import { ServiceModule } from './services/service.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    RxjsComponent
   ],
   imports: [
     PagesModule,

@@ -13,6 +13,7 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 import { ChartsModule } from 'ng2-charts';
+import { PromesasComponent } from './promesas/promesas.component';
 
 @NgModule({
     declarations:[
@@ -22,7 +23,8 @@ import { ChartsModule } from 'ng2-charts';
         Graficas1Component,
         IncrementadorComponent,
         GraficoDonaComponent,
-        AccountSettingsComponent
+        AccountSettingsComponent,
+        PromesasComponent
     ],
     exports:[
         DashboardComponent,
