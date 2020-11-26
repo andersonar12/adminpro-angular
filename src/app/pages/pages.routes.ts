@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from "@angular/router";
 import { RxjsComponent } from '../components/rxjs/rxjs.component';
+import { LoginGuardGuard } from '../services/guards/login-guard.guard';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
@@ -11,6 +12,7 @@ const pagesRoutes:Routes = [
     {
         path:'',
         component:PagesComponent,
+        canActivate: [LoginGuardGuard],
         children:[
             {path:'dashboard',component:DashboardComponent, data: {titulo: 'Dahsboard'} },
             {path:'progress',component:ProgressComponent, data: {titulo: 'Progress'}},

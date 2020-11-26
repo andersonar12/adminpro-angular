@@ -12,3 +12,7 @@ body{
 #themecolors > li > a:hover{
     cursor: pointer;
 }
+
+.pointer:hover{
+    cursor: pointer;
+}
