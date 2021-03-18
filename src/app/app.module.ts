@@ -13,13 +13,13 @@ import { ServiceModule } from './services/service.module';
 import { RxjsComponent } from './components/rxjs/rxjs.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    RxjsComponent
+    RxjsComponent,
+
   ],
   imports: [
     PagesModule,

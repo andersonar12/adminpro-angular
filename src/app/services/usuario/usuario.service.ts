@@ -6,6 +6,7 @@ import { URL_SERVICIOS } from 'src/app/config/config';
 import { map } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class UsuarioService {
   token:string;
 
   constructor( public http: HttpClient,
-              public router: Router ) {
+               public router: Router,
+               public _subirArchivoService: SubirArchivoService ) {
     this.cargarStorage();
   }
 
@@ -56,6 +58,7 @@ export class UsuarioService {
 
    this.router.navigate(['/login']);
   }
+  
   loginGoogle( token: string ){
 
     let url = URL_SERVICIOS
@@ -107,5 +110,60 @@ export class UsuarioService {
  */
   }
 
+  actualizarUsuario( usuario: Usuario){
+
+    let url = URL_SERVICIOS + '/usuario/' + usuario._id + '?token=' + this.token;
+
+    return this.http.put( url, usuario)
+                    .pipe(map( (resp:any) =>{
+
+                      let usuarioDB:Usuario = resp.usuario;
+                      Swal.fire('Usuario Actualizado', usuario.nombre, 'success');
+                      this.guardarStorage(usuarioDB._id, this.token, usuarioDB);
+
+                      return true;
+                    } ));
+  }
+
+  cambiarImagen( archivo: File, id: string){
+
+    this._subirArchivoService.subirArchivo( archivo, 'usuarios', id ).then( (resp: any) =>{
+
+      this.usuario.img = resp.usuario.img;
+
+      Swal.fire('Imagen Actualizada', this.usuario.nombre, 'success' );
+
+      this.guardarStorage( id, this.token, this.usuario );
+
+    }).catch( resp =>{
+
+      console.log( resp );
+
+    })
+    
+  }
+
+  cargarUsuarios( desde: number = 0 ){
+
+    let url = URL_SERVICIOS + '/usuario?desde='+ desde;
+
+    return this.http.get( url );
+  }
+
+  buscarUsuarios( termino: string ){
+
+    let url = URL_SERVICIOS + '/busqueda/coleccion/usuarios/' + termino;
+
+    return this.http.get( url )
+                    .pipe(map( (resp:any) =>{
+                      return resp.usuarios
+                       } ));
+  }
+
+  borrarUsuario( id: string ){
+    let url = URL_SERVICIOS + '/usuario/' + id + '?token=' + this.token;
+
+    return this.http.delete( url );
+  }
   
 }

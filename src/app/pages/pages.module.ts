@@ -14,6 +14,11 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 
 import { ChartsModule } from 'ng2-charts';
 import { PromesasComponent } from './promesas/promesas.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { ProfileComponent } from './profile/profile.component';
+import { CommonModule } from '@angular/common';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { ModalUploadComponent } from "../components/modal-upload/modal-upload.component";
 
 @NgModule({
     declarations:[
@@ -24,7 +29,10 @@ import { PromesasComponent } from './promesas/promesas.component';
         IncrementadorComponent,
         GraficoDonaComponent,
         AccountSettingsComponent,
-        PromesasComponent
+        PromesasComponent,
+        ProfileComponent,
+        UsuariosComponent,
+        ModalUploadComponent
     ],
     exports:[
         DashboardComponent,
@@ -32,11 +40,12 @@ import { PromesasComponent } from './promesas/promesas.component';
         Graficas1Component
     ],
     imports:[
+        CommonModule,
         SharedModule,
         PAGES_ROUTES,
         FormsModule,
-        ChartsModule
-
+        ChartsModule,
+        PipesModule
     ]
 })
 
